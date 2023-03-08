@@ -23,9 +23,9 @@ class GridConsts:
 
     # Define rewards for different cells
     whiteReward = -0.04
-    greenReward = 1
-    brownReward = -1
-    wallCollision = 0
+    greenReward = 1.0
+    brownReward = -1.0
+    wallCollision = 0.0
 
     # Define the transition probabilities for the agent 
     intendedProb = 0.8
@@ -36,7 +36,7 @@ class GridConsts:
     discFactor =  0.99
 
     # Define the maximum value of reward    
-    maxReward = 1
+    maxReward = 1.0
 
     # Define the parameters for maximum error permitted  
     const = 30
