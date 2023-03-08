@@ -4,7 +4,7 @@ Python class that defines the utility of a state given the action taken by the a
 
 class Utility:
 
-    # Constructor function that initializes the Action and Utility
+    # Constructor method that initializes the Action and Utility
     def __init__(self, action=None, util=0.0):
         self.action = action
         self.util = util
