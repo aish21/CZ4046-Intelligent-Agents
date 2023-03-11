@@ -1,3 +1,9 @@
+/*
+ * This class holds constants related to the grid, such as -
+ * its dimensions, separators used for grid cells and row-columns, and the placement of special cells (i.e., green, brown, and walls)
+ * It is marked as final to prevent subclassing
+ */
+
 package controller;
 
 public final class GridConstants {
@@ -18,5 +24,5 @@ public final class GridConstants {
     public static final String GREEN_CELLS = "0,0; 2,0; 5,0; 3,1; 4,2; 5,3";
 	public static final String BROWN_CELLS = "1,1; 5,1; 2,2; 3,3; 4,4";
 	public static final String WALL_CELLS = "1,0; 4,1; 1,4; 2,4; 3,4";
-    
+
 }

@@ -1,3 +1,9 @@
+/*
+ * This class defines the constants used in the iteration process of the value and policy iteration algorithms. 
+ * It includes rewards for different cells, transition probabilities, discount factor, maximum reward, maximum error, 
+ * number of times the Bellman algorithm is executed, and the upper bound on utility values.
+ */
+
 package controller;
 
 public final class IterationConstants {
@@ -28,5 +34,5 @@ public final class IterationConstants {
 
     // Define the upper bound on utility values
     public static final double UTILITY_UPPER_BOUND = MAXIMUM_REWARD / (1 - DISCOUNT_FACTOR);
-    
+
 }
