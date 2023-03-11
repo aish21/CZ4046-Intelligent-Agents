@@ -5,7 +5,7 @@
 
 package grid;
 
-public class State {
+public class AgentState {
 
     // The reward for being in this state, initialized to 0
     private double current_reward = 0.000;
@@ -14,7 +14,7 @@ public class State {
 	private boolean is_wall = false;
 
     // Constructor that takes the initial reward for the state as a parameter
-	public State(double reward) {
+	public AgentState(double reward) {
 		this.current_reward = reward;
 	}
 
