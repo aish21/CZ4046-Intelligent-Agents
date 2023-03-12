@@ -15,7 +15,7 @@ public enum AgentAction {
 	// String representation of the action taken
 	private String action_string_representaion;
 
-    /*
+    /**
      * Constructor for AgentAction enum.
      * @param string_rep The string representation of the action.
      */
@@ -24,7 +24,7 @@ public enum AgentAction {
 		this.action_string_representaion = string_rep;
 	}
 
-    /*
+    /**
      * Returns the string representation of the action.
      * @return The string representation of the action.
      */
@@ -43,11 +43,11 @@ public enum AgentAction {
     // A random number generator
 	private static final Random RANDOM = new Random();
 
-    /*
+    /**
      * Returns a random AgentAction.
      * @return A random AgentAction.
      */
-    
+
 	public static AgentAction getRandomAction() {
 		return ACTIONS[RANDOM.nextInt(SIZE)];
 	}

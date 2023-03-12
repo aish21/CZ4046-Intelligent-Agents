@@ -16,7 +16,7 @@ public class Grid {
 		build_grid();
 	}
 
-	/*
+	/**
      * Returns a 2D array of states
      * @return 2D array of State objects representing the grid
      */

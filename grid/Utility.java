@@ -15,7 +15,7 @@ public class Utility implements Comparable<Utility> {
 		utility = 0.000;
 	}
 
-    /*
+    /**
      * Creates a new Utility object with specified action and utility values.
      * @param action The action associated with the state
      * @param util The utility value of the state
@@ -26,7 +26,7 @@ public class Utility implements Comparable<Utility> {
 		this.utility = util;
 	}
 
-    /*
+    /**
      * Returns the action associated with the state.
      * @return The action associated with the state
      */
@@ -35,7 +35,7 @@ public class Utility implements Comparable<Utility> {
 		return agent_action;
 	}
 
-    /*
+    /**
      * Returns the string representation of the action associated with the state.
      * @return The string representation of the action associated with the state
      */
@@ -45,7 +45,7 @@ public class Utility implements Comparable<Utility> {
 		return agent_action != null ? agent_action.toString() : " Wall";
 	}
 
-    /*
+    /**
      * Sets the action associated with the state.
      * @param action The action to be set
      */
@@ -54,7 +54,7 @@ public class Utility implements Comparable<Utility> {
 		this.agent_action = action;
 	}
 
-    /*
+    /**
      * Returns the utility value of the state.
      * @return The utility value of the state
      */
@@ -63,7 +63,7 @@ public class Utility implements Comparable<Utility> {
 		return utility;
 	}
 
-    /*
+    /**
      * Sets the utility value of the state.
      * @param util The utility value to be set
      */
@@ -72,7 +72,7 @@ public class Utility implements Comparable<Utility> {
 		this.utility = util;
 	}
 
-    /*
+    /**
      * Compares this Utility object with another Utility object based on their utility values in descending order.
      * @param other The other Utility object to be compared with
      * @return A negative integer, zero, or a positive integer as this object is less than, equal to, or greater than the specified object
