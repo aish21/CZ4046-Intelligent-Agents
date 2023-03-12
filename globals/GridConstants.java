@@ -4,7 +4,7 @@
  * It is marked as final to prevent subclassing
  */
 
-package controller;
+package globals;
 
 public final class GridConstants {
 

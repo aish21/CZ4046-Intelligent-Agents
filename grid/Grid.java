@@ -4,8 +4,8 @@
 
 package grid;
 
-import controller.GridConstants;
-import controller.IterationConstants;
+import globals.GridConstants;
+import globals.IterationConstants;
 
 public class Grid {
     private AgentState[][] gridEnv = null;

@@ -4,7 +4,7 @@
  * number of times the Bellman algorithm is executed, and the upper bound on utility values.
  */
 
-package controller;
+package globals;
 
 public final class IterationConstants {
     
