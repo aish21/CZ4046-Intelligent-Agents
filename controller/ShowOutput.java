@@ -21,7 +21,7 @@ public class ShowOutput {
 	public static void dispGrid(AgentState[][] grid) {
 
         // Create a StringBuilder object with a title for the frame
-		StringBuilder sb = ShowOutput.frameTitle("GRID WORLD");
+		StringBuilder sb = ShowOutput.frameTitle(" GIVEN GRID WORLD ENVIRONMENT ");
 		sb.append("|");
 
         // Add separators for the columns
@@ -48,12 +48,12 @@ public class ShowOutput {
 
                 // If the current state is the agent's starting point, label it as "Start"
 				if (col == globals.GridConstants.AGENT_INIT_COL && row == globals.GridConstants.AGENT_INIT_ROW) {
-					temp = " Start";
+					temp = " START";
 				} 
                 
                 // If the current state is a wall, label it as "Wall"
                 else if(state.isWall()) {
-					temp = "Wall";
+					temp = "WALL";
 				}
 
                 // If the current state has a reward different than the default white reward, display the reward
@@ -103,7 +103,7 @@ public class ShowOutput {
 	public static void displayPolicy(final Utility[][] utilArr) {
 		
         // create a StringBuilder object to build the output string
-        StringBuilder sb = frameTitle("Plot of Optimal Policy");
+        StringBuilder sb = frameTitle(" OUTPUT: OPTIMAL POLICY PLOT ");
 		sb.append("|");
 		for(int col = 0 ; col < globals.GridConstants.TOTAL_NUM_COLS ; col++) {
 			sb.append("--------|");
@@ -152,7 +152,7 @@ public class ShowOutput {
     */
 
 	public static void displayUtilities(final AgentState[][] grid, final Utility[][] utilArr) {
-		StringBuilder sb = frameTitle("Utility Values of States");
+		StringBuilder sb = frameTitle(" OUTPUT: UTILITY VALUES OF ALL STATES ");
 		for (int col = 0; col < globals.GridConstants.TOTAL_NUM_COLS; col++) {
 			for (int row = 0; row < globals.GridConstants.TOTAL_NUM_ROWS; row++) {
 
@@ -173,7 +173,7 @@ public class ShowOutput {
 
 	public static void displayUtilitiesGrid(final Utility[][] utilArr) {
 
-		StringBuilder sb = frameTitle("Utilities of All States (Map)");
+		StringBuilder sb = frameTitle(" MAP OF ALL STATES' UTILITIES ");
 
 		sb.append("|");
 		for(int col = 0 ; col < globals.GridConstants.TOTAL_NUM_COLS ; col++) {
@@ -223,8 +223,8 @@ public class ShowOutput {
     */
 
 	public static void displayIterationsCount(int num) {
-		StringBuilder sb = frameTitle("Total Iteration Count");
-		sb.append("Iterations: " + num + "\n");
+		StringBuilder sb = frameTitle("NUMBER OF ITERATIONS");
+		sb.append("TOTAL NUMBER OF ITERATIONS: " + num + "\n");
 		System.out.println(sb.toString());
 	}
 
@@ -236,7 +236,7 @@ public class ShowOutput {
     */
 	
     public static void displayExperimentSetup(boolean isValueIteration, double convergeThreshold) {
-		StringBuilder sb = frameTitle(" - SETUP - ");
+		StringBuilder sb = frameTitle(" IMPORTANT VALUES ");
 		if (isValueIteration) {
 			sb.append("DISCOUNT FACTOR\t\t" + ":\t" + globals.IterationConstants.DISCOUNT_FACTOR + "\n");
 			sb.append("UPPER BOUND OF UTILITY\t" + ":\t" + String.format("%.5g", globals.IterationConstants.UTILITY_UPPER_BOUND) + "\n");
@@ -256,7 +256,7 @@ public class ShowOutput {
      * Create a frame for a title string
      * 
      * @param str The title string to create the frame for
-     * @return A StringBuilder object containing the title string framed with asterisks
+     * @return A StringBuilder object containing the title string framed with hyphens
     */
     
 	public static StringBuilder frameTitle(String str) {
@@ -264,13 +264,13 @@ public class ShowOutput {
 		int padding = 4;
 		sb.append("\n");
 		for(int i = 0; i < str.length()+padding; i++) {
-			sb.append("*");
+			sb.append("-");
 		}
 		sb.append("\n");
-		sb.append("* " + str + " *");
+		sb.append("- " + str + " -");
 		sb.append("\n");
 		for(int i = 0; i < str.length()+padding; i++) {
-			sb.append("*");
+			sb.append("-");
 		}
 		sb.append("\n");
 		sb.append("\n");
