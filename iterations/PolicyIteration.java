@@ -17,7 +17,7 @@ public class PolicyIteration {
 	private static List<Utility[][]> utilityList;
 	private static AgentState[][] grid;
 	private static int iterations = 0;
-	private static double convergeThreshold;
+	//private static double convergeThreshold;
 	private static boolean isValueIteration = true;
 
 	public static void main(String[] args) {
@@ -38,12 +38,12 @@ public class PolicyIteration {
 
     public static void runPolicyIteration(final AgentState[][] grid) {
 
-		Utility[][] currUtilArr = new Utility[Const.NUM_COLS][Const.NUM_ROWS];
-		Utility[][] newUtilArr = new Utility[Const.NUM_COLS][Const.NUM_ROWS];
+		Utility[][] currUtilArr = new Utility[globals.GridConstants.TOTAL_NUM_COLS][globals.GridConstants.TOTAL_NUM_ROWS];
+		Utility[][] newUtilArr = new Utility[globals.GridConstants.TOTAL_NUM_COLS][globals.GridConstants.TOTAL_NUM_ROWS];
 
 		// Initialize default utilities and policies for each state
-		for (int col = 0; col < Const.NUM_COLS; col++) {
-			for (int row = 0; row < Const.NUM_ROWS; row++) {
+		for (int col = 0; col < globals.GridConstants.TOTAL_NUM_COLS; col++) {
+			for (int row = 0; row < globals.GridConstants.TOTAL_NUM_ROWS; row++) {
 				newUtilArr[col][row] = new Utility();
 				if (!grid[col][row].isWall()) {
 					AgentAction randomAction = AgentAction.getRandomAction();
@@ -60,33 +60,33 @@ public class PolicyIteration {
 
 		do {
 
-			UtilityController.updateUtilites(newUtilArr, currUtilArr);
+			UtilityController.updateUtils(newUtilArr, currUtilArr);
 
 			// Append to list of Utility a copy of the existing actions & utilities
 			Utility[][] currUtilArrCopy =
-			new Utility[Const.NUM_COLS][Const.NUM_ROWS];
-			UtilityController.updateUtilites(currUtilArr, currUtilArrCopy);
+			new Utility[globals.GridConstants.TOTAL_NUM_COLS][globals.GridConstants.TOTAL_NUM_ROWS];
+			UtilityController.updateUtils(currUtilArr, currUtilArrCopy);
 			utilityList.add(currUtilArrCopy);
 			
 
 			// Policy estimation based on the current actions and utilities
-			newUtilArr = UtilityController.estimateNextUtilities(currUtilArr, grid);
+			newUtilArr = UtilityController.calcNextUtil(currUtilArr, grid);
 
 			unchanged = true;
 
 			// For each state - Policy improvement
-			for (int row = 0; row < Const.NUM_ROWS; row++) {
-				for (int col = 0; col < Const.NUM_COLS; col++) {
+			for (int row = 0; row < globals.GridConstants.TOTAL_NUM_ROWS; row++) {
+				for (int col = 0; col < globals.GridConstants.TOTAL_NUM_COLS; col++) {
 
 					// Calculate the utility for each state, not necessary to calculate for walls
 					if (!grid[col][row].isWall()) {
 						// Best calculated action based on maximizing utility
 						Utility bestActionUtil =
-						UtilityController.getBestUtility(col, row, newUtilArr, grid);
+						UtilityController.calcBestUtil(col, row, newUtilArr, grid);
 
 						// Action and the corresponding utility based on current policy
 						AgentAction policyAction = newUtilArr[col][row].getAction();
-						Utility policyActionUtil = UtilityController.getFixedUtility(policyAction, col, row, newUtilArr, grid);
+						Utility policyActionUtil = UtilityController.calcActionUtil(policyAction, col, row, newUtilArr, grid);
 
 						if((bestActionUtil.getUtil() > policyActionUtil.getUtil())) {
 							newUtilArr[col][row].setAction(bestActionUtil.getAction());
