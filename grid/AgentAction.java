@@ -7,10 +7,10 @@ import java.util.Random;
 
 public enum AgentAction {
     
-    UP("↑"), 
-    DOWN("↓"),
-    RIGHT("→"),
-	LEFT("←");
+    UP("^"), // ↑ 
+    DOWN("v"), // ↓
+    RIGHT(">"), // →
+	LEFT("<"); // ←
 
 	// String representation of the action taken
 	private String action_string_representaion;
