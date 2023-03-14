@@ -51,7 +51,8 @@ public class ValueIteration {
 		// Initialize delta to minimum double value first
 		double delta = Double.MIN_VALUE;
 
-		convergeThreshold = globals.IterationConstants.MAXIMUM_ALLOWABLE_DISCOUNTED_ERROR * ((1.000 - globals.IterationConstants.DISCOUNT_FACTOR) / globals.IterationConstants.DISCOUNT_FACTOR);
+		convergeThreshold = globals.IterationConstants.MAXIMUM_ALLOWABLE_DISCOUNTED_ERROR * 
+        ((1.000 - globals.IterationConstants.DISCOUNT_FACTOR) / globals.IterationConstants.DISCOUNT_FACTOR);
 
 		// Initialize number of iterations
 		do {

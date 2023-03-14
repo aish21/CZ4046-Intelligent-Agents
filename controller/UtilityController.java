@@ -59,7 +59,8 @@ public class UtilityController {
      * @return              The Utility object for the given action
      */
 
-	public static Utility calcActionUtil(final AgentAction action, final int col, final int row, final Utility[][] action_utils, final AgentState[][] grid) {
+	public static Utility calcActionUtil(final AgentAction action, final int col, final int row, final Utility[][] action_utils, 
+	final AgentState[][] grid) {
 
 		Utility action_util = null;
 

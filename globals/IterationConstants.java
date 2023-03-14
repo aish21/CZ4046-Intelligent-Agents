@@ -26,11 +26,11 @@ public final class IterationConstants {
     public static final double MAXIMUM_REWARD = 1.000;
 
     // Define the parameters for maximum error permitted  
-    public static final double MAXIMUM_ALLOWED_ERROR = 30;
+    public static final double MAXIMUM_ALLOWED_ERROR = 1;
     public static final double MAXIMUM_ALLOWABLE_DISCOUNTED_ERROR = MAXIMUM_ALLOWED_ERROR * MAXIMUM_REWARD;
 
     // Define the number of times the Bellman algorithm is executed
-    public static final int K = 10;
+    public static final int K = 50;
 
     // Define the upper bound on utility values
     public static final double UTILITY_UPPER_BOUND = MAXIMUM_REWARD / (1 - DISCOUNT_FACTOR);

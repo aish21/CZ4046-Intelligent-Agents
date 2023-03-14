@@ -26,7 +26,7 @@ public class PolicyIteration {
 		gridEnvironment = new Grid();
 		grid = gridEnvironment.getGrid();
 
-		// Execute value iteration
+		// Execute policy iteration
 		runPolicyIteration(grid);
 
 		// Display experiment results

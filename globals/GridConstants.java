@@ -9,8 +9,8 @@ package globals;
 public final class GridConstants {
 
     // Define the dimensions of the Grid
-    public static final int TOTAL_NUM_COLS = 6;
-    public static final int TOTAL_NUM_ROWS = 6;
+    public static final int TOTAL_NUM_COLS = 600;
+    public static final int TOTAL_NUM_ROWS = 600;
 
     // Define separators for grid cells and row-columns
     public static final String CELL_SEPARATOR = ";";

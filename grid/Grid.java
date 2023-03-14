@@ -13,7 +13,8 @@ public class Grid {
     // Constructor to initialize the grid environment by building the grid
 	public Grid() {
 		gridEnv = new AgentState[GridConstants.TOTAL_NUM_COLS][GridConstants.TOTAL_NUM_ROWS];
-		build_grid();
+		grid_builder();
+		complexGrid();
 	}
 
 	/**
@@ -28,7 +29,7 @@ public class Grid {
      * Initializes the grid by setting rewards for each state based on 
      * their color, and marking walls as unreachable
      */
-	public void build_grid() {
+	public void grid_builder() {
 		// All cells start with -0.040 as reward
 		for(int row = 0 ; row < GridConstants.TOTAL_NUM_ROWS ; row++) {
 			for(int col = 0 ; col < GridConstants.TOTAL_NUM_COLS ; col++) {
@@ -67,6 +68,22 @@ public class Grid {
 			int gridRow = Integer.parseInt(gridInfo[1]);
 			gridEnv[gridCol][gridRow].setReward(IterationConstants.WALL_COLLISION);
 			gridEnv[gridCol][gridRow].setAsWall(true);
+		}
+	}
+
+	public void complexGrid() {
+
+		for(int row = 0 ; row < GridConstants.TOTAL_NUM_ROWS ; row++) {
+			for(int col = 0 ; col < GridConstants.TOTAL_NUM_COLS ; col++) {
+
+				if (row >= 6 || col >= 6) {
+					int trueRow = row % 6;
+					int trueCol = col % 6;
+
+					gridEnv[col][row].setReward(gridEnv[trueCol][trueRow].getReward());
+					gridEnv[col][row].setAsWall(gridEnv[trueCol][trueRow].isWall());
+				}
+			}
 		}
 	}
 
