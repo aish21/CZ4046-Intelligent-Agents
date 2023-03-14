@@ -1,2 +1,2 @@
-# CE-CZ-4046-Intelligent-Agents
-Repo for Intelligent Agents assignements
+# CZ4046-Intelligent-Agents
+Repository for NTU Course - Intelligent Agents
