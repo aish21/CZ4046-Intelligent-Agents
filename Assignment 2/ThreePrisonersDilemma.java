@@ -217,7 +217,7 @@ public class ThreePrisonersDilemma {
 	}
 
 	// Okay strat - 4
-	class TitForTatPlayer extends Player {
+	class TitForTatPlayer2 extends Player {
 		//TitForTatPlayer cooperates in the first round, and then copies
 		//the previous action of the opponent with the highest total payoff
 		int selectAction(int n, int[] myHistory, int[] oppHistory1, int[] oppHistory2) {
@@ -408,6 +408,37 @@ public class ThreePrisonersDilemma {
 		}	
 	}
 
+	class TL_Strategy extends Player {
+		// Calculate percentage of cooperation by a certain player
+		float calculateCoopPercentage(int[] history) {
+			int cooperates = 0;
+			for (int i = 0; i < history.length; i++)
+				if (history[i] == 0)
+					cooperates++;
+			return (float) cooperates / history.length * 100;
+		}
+
+		int selectAction(int n, int[] myHistory, int[] oppHistory1, int[] oppHistory2) {
+			if (n == 0) {
+				return 0; // cooperate by default
+			}
+			
+			// defection by default if either opponent defects last round
+			if (oppHistory1[n - 1] == 1 || oppHistory2[n - 1] == 1) {
+				return 1;
+			}
+			
+			// Cooperate if both opponents have been mostly cooperating
+			float opp1C = calculateCoopPercentage(oppHistory1);
+			float opp2C = calculateCoopPercentage(oppHistory2);
+			if (opp1C > 90 && opp2C > 90) {
+				return 0;
+			}
+			
+			// Otherwise default to defection
+			return 1;
+		}
+	}
 	
 	/* In our tournament, each pair of strategies will play one match against each other. 
 	 This procedure simulates a single match and returns the scores. */
@@ -453,7 +484,7 @@ public class ThreePrisonersDilemma {
 		case 3: return new TolerantPlayer();
 		case 4: return new FreakyPlayer();
 		case 5: return new T4TPlayer();
-		case 6: return new CombinedPlayer();
+		case 6: return new TL_Strategy();
 		}
 		throw new RuntimeException("Bad argument passed to makePlayer");
 	}
