@@ -1,3 +1,7 @@
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+
 public class ThreePrisonersDilemma {
 	
 	/* 
@@ -47,6 +51,104 @@ public class ThreePrisonersDilemma {
 	}
 	
 	/* Here are four simple strategies: */
+
+	public class SinghAishwaryaPlayer extends Player {
+
+		int selectAction(int n, int[] myHistory, int[] oppHistory1, int[] oppHistory2) {
+	
+			// Rule 1
+			if (n == 0) return 0; //cooperate by default
+	
+			// Rule 2
+			if (n >= 99) return 1; // defect in the end
+	
+			// Rule 3, 4, 5
+	
+			/* 
+			If oppHistory[n-1] == oppHistory2[n-1] then either both cooperated or both defected the previous round,
+			hence we can just return the action that one of them played in the previous round
+			Else if oppHistory[n-1] != oppHistory[n-2] then only 1 of them cooperated the previous round.
+			This corresponds to Rule 5: playTolerantAction 
+			*/
+			return oppHistory1[n-1] == oppHistory2[n-1] ? oppHistory1[n-1]:
+			playTolerantAction(n, myHistory, oppHistory1, oppHistory2);
+		}
+	
+		// Implentation of Rule 5: Selecting a Tolerant Action 
+		int playTolerantAction(int n, int[] myHistory, int[] oppHistory1, int[] oppHistory2) {
+			int opponent1 = 0;
+			int opponent2 = 0;
+	
+			for (int i = 0 ; i < n; ++i){
+				opponent1 += (oppHistory1[i] == 0? 1 : -1);
+				
+				opponent2 += (oppHistory2[i] == 0? 1: -1);
+			}
+	
+			// If the value > 0 then ooponent has cooperated more times than defected
+			// Only if both values > 0 then we cooperate, else defect
+	
+			if (opponent1 >= 0 && opponent2 >= 0) return 0;
+			return 1;
+	
+		}
+	}
+
+	public class ImprovedSinghAishwaryaPlayer extends Player {
+		private static final int COOPERATE = 0;
+		private static final int DEFECT = 1;
+		private static final int TOLERANCE_THRESHOLD = 0;
+	
+		int selectAction(int n, int[] myHistory, int[] oppHistory1, int[] oppHistory2) {
+			// Rule 1: Cooperate by default on first move
+			if (n == 0) {
+				return COOPERATE;
+			}
+	
+			// Rule 2: Defect in the endgame
+			if (n >= 99) {
+				return DEFECT;
+			}
+	
+			// Rule 3 and 4: If both opponents played the same move last round, play that move too
+			if (oppHistory1[n-1] == oppHistory2[n-1]) {
+				return oppHistory1[n-1];
+			}
+	
+			// Rule 5: Play a tolerant action
+			return playTolerantAction(myHistory, oppHistory1, oppHistory2);
+		}
+	
+		// Implementation of Rule 5: Selecting a Tolerant Action
+		private int playTolerantAction(int[] myHistory, int[] oppHistory1, int[] oppHistory2) {
+			int numCooperate1 = 0;
+			int numCooperate2 = 0;
+			int numDefect1 = 0;
+			int numDefect2 = 0;
+	
+			for (int i = 0; i < myHistory.length; i++) {
+				if (oppHistory1[i] == COOPERATE) {
+					numCooperate1++;
+				} else {
+					numDefect1++;
+				}
+	
+				if (oppHistory2[i] == COOPERATE) {
+					numCooperate2++;
+				} else {
+					numDefect2++;
+				}
+			}
+	
+			// If both opponents have cooperated more than they've defected, cooperate too
+			if (numCooperate1 - numDefect1 >= TOLERANCE_THRESHOLD && numCooperate2 - numDefect2 >= TOLERANCE_THRESHOLD) {
+				return COOPERATE;
+			} else {
+				return DEFECT;
+			}
+		}
+	}
+	
 
 	class CombinedPlayer extends Player {
 		// Parameters for GradualPlayer's strategy
@@ -407,38 +509,8 @@ public class ThreePrisonersDilemma {
 				return oppHistory2[n-1];
 		}	
 	}
+	
 
-	class TL_Strategy extends Player {
-		// Calculate percentage of cooperation by a certain player
-		float calculateCoopPercentage(int[] history) {
-			int cooperates = 0;
-			for (int i = 0; i < history.length; i++)
-				if (history[i] == 0)
-					cooperates++;
-			return (float) cooperates / history.length * 100;
-		}
-
-		int selectAction(int n, int[] myHistory, int[] oppHistory1, int[] oppHistory2) {
-			if (n == 0) {
-				return 0; // cooperate by default
-			}
-			
-			// defection by default if either opponent defects last round
-			if (oppHistory1[n - 1] == 1 || oppHistory2[n - 1] == 1) {
-				return 1;
-			}
-			
-			// Cooperate if both opponents have been mostly cooperating
-			float opp1C = calculateCoopPercentage(oppHistory1);
-			float opp2C = calculateCoopPercentage(oppHistory2);
-			if (opp1C > 90 && opp2C > 90) {
-				return 0;
-			}
-			
-			// Otherwise default to defection
-			return 1;
-		}
-	}
 	
 	/* In our tournament, each pair of strategies will play one match against each other. 
 	 This procedure simulates a single match and returns the scores. */
@@ -484,7 +556,7 @@ public class ThreePrisonersDilemma {
 		case 3: return new TolerantPlayer();
 		case 4: return new FreakyPlayer();
 		case 5: return new T4TPlayer();
-		case 6: return new TL_Strategy();
+		case 6: return new ImprovedSinghAishwaryaPlayer();
 		}
 		throw new RuntimeException("Bad argument passed to makePlayer");
 	}
