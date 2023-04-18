@@ -1,0 +1,449 @@
+Tournament 1
+GrimTriggerPlayer: 762.65045 points.
+SinghAishwaryaPlayer: 761.1073 points.
+TolerantPlayer: 750.41486 points.
+GradualPlayer: 746.72797 points.
+CombinedPlayer: 746.0155 points.
+FirmButFairPlayer: 736.88916 points.
+T4TPlayer: 736.4246 points.
+ImprovedPlayer: 735.1098 points.
+TitForTatPlayer2: 733.6206 points.
+NicePlayer: 696.6952 points.
+SoftGrudgerPlayer: 659.3761 points.
+FreakyPlayer: 637.47577 points.
+HardMajorityPlayer: 572.10394 points.
+NastyPlayer: 567.5286 points.
+RandomPlayer: 528.5725 points.
+ReverseT4TPlayer: 496.6406 points.
+
+Tournament 2
+CombinedPlayer: 764.47095 points.
+GrimTriggerPlayer: 761.42834 points.
+TolerantPlayer: 750.7072 points.
+FirmButFairPlayer: 748.7159 points.
+GradualPlayer: 748.1855 points.
+SinghAishwaryaPlayer: 747.342 points.
+T4TPlayer: 738.0002 points.
+TitForTatPlayer2: 733.9816 points.
+ImprovedPlayer: 733.49646 points.
+NicePlayer: 668.74084 points.
+SoftGrudgerPlayer: 667.9044 points.
+FreakyPlayer: 633.28564 points.
+NastyPlayer: 565.5589 points.
+HardMajorityPlayer: 561.9955 points.
+RandomPlayer: 557.2273 points.
+ReverseT4TPlayer: 490.17365 points.
+
+Tournament 3
+GradualPlayer: 758.05396 points.
+TolerantPlayer: 754.8336 points.
+GrimTriggerPlayer: 743.8924 points.
+FirmButFairPlayer: 741.6 points.
+SinghAishwaryaPlayer: 739.69366 points.
+CombinedPlayer: 738.6926 points.
+ImprovedPlayer: 733.7819 points.
+T4TPlayer: 731.1847 points.
+TitForTatPlayer2: 711.8676 points.
+NicePlayer: 665.74976 points.
+SoftGrudgerPlayer: 662.4648 points.
+FreakyPlayer: 629.06195 points.
+HardMajorityPlayer: 566.6467 points.
+NastyPlayer: 548.21594 points.
+RandomPlayer: 536.12286 points.
+ReverseT4TPlayer: 486.88205 points.
+
+Tournament 4
+GrimTriggerPlayer: 754.8083 points.
+FirmButFairPlayer: 754.38477 points.
+TolerantPlayer: 752.1092 points.
+GradualPlayer: 750.0336 points.
+SinghAishwaryaPlayer: 747.17084 points.
+CombinedPlayer: 740.805 points.
+TitForTatPlayer2: 728.50684 points.
+T4TPlayer: 724.59 points.
+ImprovedPlayer: 724.27264 points.
+SoftGrudgerPlayer: 670.1082 points.
+NicePlayer: 669.32166 points.
+FreakyPlayer: 639.4223 points.
+HardMajorityPlayer: 574.2684 points.
+NastyPlayer: 570.9764 points.
+RandomPlayer: 541.33966 points.
+ReverseT4TPlayer: 486.56528 points.
+
+Tournament 5
+GrimTriggerPlayer: 760.26526 points.
+CombinedPlayer: 758.0019 points.
+SinghAishwaryaPlayer: 750.1823 points.
+GradualPlayer: 742.72516 points.
+FirmButFairPlayer: 739.9123 points.
+TolerantPlayer: 736.3268 points.
+T4TPlayer: 730.0498 points.
+TitForTatPlayer2: 723.14545 points.
+ImprovedPlayer: 720.56433 points.
+SoftGrudgerPlayer: 668.4057 points.
+NicePlayer: 652.72205 points.
+FreakyPlayer: 598.3918 points.
+HardMajorityPlayer: 577.1916 points.
+NastyPlayer: 575.1597 points.
+RandomPlayer: 530.6034 points.
+ReverseT4TPlayer: 508.95844 points.
+
+Tournament 6
+TolerantPlayer: 754.30286 points.
+CombinedPlayer: 751.5558 points.
+GrimTriggerPlayer: 742.4598 points.
+FirmButFairPlayer: 740.53516 points.
+GradualPlayer: 737.5671 points.
+TitForTatPlayer2: 733.57227 points.
+SinghAishwaryaPlayer: 731.51447 points.
+ImprovedPlayer: 729.99335 points.
+T4TPlayer: 717.15247 points.
+NicePlayer: 682.93616 points.
+SoftGrudgerPlayer: 670.40186 points.
+FreakyPlayer: 592.33026 points.
+NastyPlayer: 568.3117 points.
+HardMajorityPlayer: 566.21027 points.
+RandomPlayer: 530.929 points.
+ReverseT4TPlayer: 488.24304 points.
+
+Tournament 7
+FirmButFairPlayer: 761.5968 points.
+TolerantPlayer: 752.46515 points.
+CombinedPlayer: 743.2353 points.
+GrimTriggerPlayer: 741.52356 points.
+GradualPlayer: 740.1393 points.
+T4TPlayer: 735.4014 points.
+SinghAishwaryaPlayer: 734.04 points.
+TitForTatPlayer2: 732.6493 points.
+ImprovedPlayer: 730.7226 points.
+NicePlayer: 674.6838 points.
+SoftGrudgerPlayer: 665.9103 points.
+FreakyPlayer: 612.1211 points.
+HardMajorityPlayer: 578.4006 points.
+NastyPlayer: 573.81177 points.
+RandomPlayer: 532.5914 points.
+ReverseT4TPlayer: 490.80685 points.
+
+Tournament 8
+GrimTriggerPlayer: 758.1861 points.
+CombinedPlayer: 758.00104 points.
+GradualPlayer: 755.285 points.
+SinghAishwaryaPlayer: 752.11847 points.
+FirmButFairPlayer: 739.9668 points.
+TolerantPlayer: 735.42267 points.
+ImprovedPlayer: 733.71295 points.
+T4TPlayer: 731.8228 points.
+TitForTatPlayer2: 718.35626 points.
+NicePlayer: 679.0552 points.
+SoftGrudgerPlayer: 656.3002 points.
+FreakyPlayer: 605.92676 points.
+NastyPlayer: 566.2952 points.
+RandomPlayer: 565.2011 points.
+HardMajorityPlayer: 559.4485 points.
+ReverseT4TPlayer: 508.98602 points.
+
+Tournament 9
+GrimTriggerPlayer: 757.63153 points.
+SinghAishwaryaPlayer: 756.7791 points.
+TolerantPlayer: 745.4699 points.
+CombinedPlayer: 744.45917 points.
+FirmButFairPlayer: 743.72577 points.
+TitForTatPlayer2: 736.9408 points.
+ImprovedPlayer: 734.8621 points.
+GradualPlayer: 732.23553 points.
+T4TPlayer: 722.4436 points.
+NicePlayer: 679.9101 points.
+SoftGrudgerPlayer: 667.07513 points.
+FreakyPlayer: 607.5086 points.
+HardMajorityPlayer: 572.06305 points.
+NastyPlayer: 571.4658 points.
+RandomPlayer: 543.4831 points.
+ReverseT4TPlayer: 504.87268 points.
+
+Tournament 10
+TolerantPlayer: 757.84045 points.
+GrimTriggerPlayer: 754.7355 points.
+CombinedPlayer: 754.5093 points.
+GradualPlayer: 751.0731 points.
+FirmButFairPlayer: 748.0159 points.
+SinghAishwaryaPlayer: 742.75793 points.
+TitForTatPlayer2: 726.8084 points.
+T4TPlayer: 724.79987 points.
+ImprovedPlayer: 724.29553 points.
+NicePlayer: 687.9489 points.
+SoftGrudgerPlayer: 676.34894 points.
+FreakyPlayer: 602.8691 points.
+HardMajorityPlayer: 575.63965 points.
+NastyPlayer: 567.8409 points.
+RandomPlayer: 555.60754 points.
+ReverseT4TPlayer: 503.44473 points.
+
+Tournament 11
+GradualPlayer: 758.76587 points.
+FirmButFairPlayer: 753.96234 points.
+TolerantPlayer: 750.1849 points.
+SinghAishwaryaPlayer: 749.43384 points.
+GrimTriggerPlayer: 748.41516 points.
+CombinedPlayer: 741.8219 points.
+TitForTatPlayer2: 739.9628 points.
+T4TPlayer: 729.40155 points.
+ImprovedPlayer: 719.42737 points.
+SoftGrudgerPlayer: 690.31464 points.
+NicePlayer: 663.1985 points.
+FreakyPlayer: 639.372 points.
+HardMajorityPlayer: 570.94904 points.
+NastyPlayer: 557.54004 points.
+RandomPlayer: 533.32294 points.
+ReverseT4TPlayer: 491.30438 points.
+
+Tournament 12
+GrimTriggerPlayer: 756.2952 points.
+FirmButFairPlayer: 755.9257 points.
+SinghAishwaryaPlayer: 752.3572 points.
+CombinedPlayer: 747.3447 points.
+TolerantPlayer: 746.5311 points.
+GradualPlayer: 744.60443 points.
+ImprovedPlayer: 737.3984 points.
+T4TPlayer: 732.82806 points.
+TitForTatPlayer2: 724.8556 points.
+NicePlayer: 690.5305 points.
+SoftGrudgerPlayer: 676.9945 points.
+FreakyPlayer: 613.07666 points.
+HardMajorityPlayer: 574.37054 points.
+NastyPlayer: 554.41895 points.
+RandomPlayer: 541.13336 points.
+ReverseT4TPlayer: 503.48428 points.
+
+Tournament 13
+SinghAishwaryaPlayer: 765.4489 points.
+GradualPlayer: 757.16144 points.
+GrimTriggerPlayer: 756.5482 points.
+FirmButFairPlayer: 752.7052 points.
+TolerantPlayer: 749.10785 points.
+ImprovedPlayer: 748.9058 points.
+CombinedPlayer: 745.5995 points.
+T4TPlayer: 740.2059 points.
+TitForTatPlayer2: 735.77625 points.
+SoftGrudgerPlayer: 666.60114 points.
+NicePlayer: 657.2899 points.
+FreakyPlayer: 640.59204 points.
+HardMajorityPlayer: 574.8805 points.
+NastyPlayer: 558.25653 points.
+RandomPlayer: 540.65106 points.
+ReverseT4TPlayer: 495.62778 points.
+
+Tournament 14
+SinghAishwaryaPlayer: 753.55505 points.
+GrimTriggerPlayer: 753.19476 points.
+TolerantPlayer: 752.70294 points.
+FirmButFairPlayer: 749.23834 points.
+CombinedPlayer: 742.3596 points.
+TitForTatPlayer2: 741.67786 points.
+GradualPlayer: 741.4591 points.
+ImprovedPlayer: 738.3116 points.
+T4TPlayer: 727.76483 points.
+NicePlayer: 665.7473 points.
+SoftGrudgerPlayer: 664.58636 points.
+FreakyPlayer: 641.49634 points.
+HardMajorityPlayer: 570.29504 points.
+RandomPlayer: 564.30066 points.
+NastyPlayer: 553.046 points.
+ReverseT4TPlayer: 500.15747 points.
+
+Tournament 15
+GradualPlayer: 749.87317 points.
+FirmButFairPlayer: 747.4121 points.
+SinghAishwaryaPlayer: 746.4423 points.
+TolerantPlayer: 743.2132 points.
+CombinedPlayer: 742.799 points.
+GrimTriggerPlayer: 742.43475 points.
+ImprovedPlayer: 738.3059 points.
+TitForTatPlayer2: 732.0555 points.
+T4TPlayer: 724.3971 points.
+SoftGrudgerPlayer: 667.4085 points.
+NicePlayer: 663.2021 points.
+FreakyPlayer: 604.64386 points.
+NastyPlayer: 585.44495 points.
+HardMajorityPlayer: 559.6113 points.
+RandomPlayer: 559.11664 points.
+ReverseT4TPlayer: 521.38947 points.
+
+Tournament 16
+GradualPlayer: 754.22845 points.
+GrimTriggerPlayer: 753.21234 points.
+TolerantPlayer: 748.5419 points.
+FirmButFairPlayer: 743.82574 points.
+SinghAishwaryaPlayer: 742.3594 points.
+CombinedPlayer: 739.6346 points.
+T4TPlayer: 732.995 points.
+TitForTatPlayer2: 724.13165 points.
+ImprovedPlayer: 718.9789 points.
+NicePlayer: 674.37354 points.
+SoftGrudgerPlayer: 654.9368 points.
+FreakyPlayer: 611.13403 points.
+HardMajorityPlayer: 567.53564 points.
+NastyPlayer: 562.45984 points.
+RandomPlayer: 533.5539 points.
+ReverseT4TPlayer: 490.2952 points.
+
+Tournament 17
+GrimTriggerPlayer: 749.2605 points.
+TolerantPlayer: 747.3524 points.
+FirmButFairPlayer: 741.12616 points.
+T4TPlayer: 740.70905 points.
+GradualPlayer: 740.6038 points.
+CombinedPlayer: 740.1144 points.
+SinghAishwaryaPlayer: 732.755 points.
+TitForTatPlayer2: 729.9943 points.
+ImprovedPlayer: 709.1771 points.
+NicePlayer: 673.2294 points.
+SoftGrudgerPlayer: 664.44336 points.
+FreakyPlayer: 591.6645 points.
+NastyPlayer: 572.998 points.
+HardMajorityPlayer: 559.48645 points.
+RandomPlayer: 525.8097 points.
+ReverseT4TPlayer: 509.74747 points.
+
+Tournament 18
+SinghAishwaryaPlayer: 763.60254 points.
+GrimTriggerPlayer: 757.0568 points.
+GradualPlayer: 756.88434 points.
+TolerantPlayer: 752.63934 points.
+FirmButFairPlayer: 749.8931 points.
+CombinedPlayer: 742.4842 points.
+T4TPlayer: 730.3543 points.
+TitForTatPlayer2: 727.2642 points.
+ImprovedPlayer: 726.9332 points.
+SoftGrudgerPlayer: 673.6523 points.
+NicePlayer: 667.6234 points.
+FreakyPlayer: 626.2903 points.
+HardMajorityPlayer: 571.32294 points.
+RandomPlayer: 558.987 points.
+NastyPlayer: 557.0284 points.
+ReverseT4TPlayer: 504.83334 points.
+
+Tournament 19
+TolerantPlayer: 758.6648 points.
+GradualPlayer: 756.0708 points.
+FirmButFairPlayer: 751.3568 points.
+SinghAishwaryaPlayer: 744.16956 points.
+GrimTriggerPlayer: 738.4313 points.
+CombinedPlayer: 737.89056 points.
+T4TPlayer: 730.94965 points.
+TitForTatPlayer2: 724.6049 points.
+ImprovedPlayer: 719.15656 points.
+NicePlayer: 674.601 points.
+SoftGrudgerPlayer: 671.1406 points.
+FreakyPlayer: 614.06177 points.
+HardMajorityPlayer: 571.8602 points.
+NastyPlayer: 571.7493 points.
+RandomPlayer: 549.9878 points.
+ReverseT4TPlayer: 501.9142 points.
+
+Tournament 20
+GrimTriggerPlayer: 752.70306 points.
+FirmButFairPlayer: 751.1246 points.
+GradualPlayer: 748.9132 points.
+CombinedPlayer: 748.8409 points.
+SinghAishwaryaPlayer: 747.27 points.
+T4TPlayer: 736.4303 points.
+TitForTatPlayer2: 735.94 points.
+TolerantPlayer: 732.3423 points.
+ImprovedPlayer: 729.293 points.
+NicePlayer: 683.78986 points.
+SoftGrudgerPlayer: 672.9277 points.
+HardMajorityPlayer: 588.3294 points.
+FreakyPlayer: 586.8011 points.
+NastyPlayer: 563.2562 points.
+RandomPlayer: 551.51324 points.
+ReverseT4TPlayer: 513.3224 points.
+
+Tournament 21
+CombinedPlayer: 759.1339 points.
+TolerantPlayer: 758.6192 points.
+GradualPlayer: 753.2544 points.
+GrimTriggerPlayer: 752.86444 points.
+T4TPlayer: 747.9882 points.
+SinghAishwaryaPlayer: 744.6221 points.
+FirmButFairPlayer: 743.4668 points.
+ImprovedPlayer: 738.5237 points.
+TitForTatPlayer2: 728.5733 points.
+SoftGrudgerPlayer: 682.3783 points.
+NicePlayer: 652.71106 points.
+FreakyPlayer: 644.25977 points.
+HardMajorityPlayer: 568.3171 points.
+NastyPlayer: 568.0146 points.
+RandomPlayer: 535.31494 points.
+ReverseT4TPlayer: 493.53268 points.
+
+Tournament 22
+GrimTriggerPlayer: 765.0709 points.
+CombinedPlayer: 757.2839 points.
+GradualPlayer: 749.8575 points.
+SinghAishwaryaPlayer: 748.0876 points.
+FirmButFairPlayer: 746.9099 points.
+TolerantPlayer: 745.83295 points.
+T4TPlayer: 726.97217 points.
+ImprovedPlayer: 718.10547 points.
+TitForTatPlayer2: 716.4696 points.
+NicePlayer: 679.08984 points.
+SoftGrudgerPlayer: 664.506 points.
+FreakyPlayer: 597.0733 points.
+HardMajorityPlayer: 571.9387 points.
+NastyPlayer: 561.06696 points.
+RandomPlayer: 549.55615 points.
+ReverseT4TPlayer: 494.49744 points.
+
+Tournament 23
+FirmButFairPlayer: 751.08923 points.
+GradualPlayer: 746.73975 points.
+TolerantPlayer: 745.4989 points.
+T4TPlayer: 743.66565 points.
+SinghAishwaryaPlayer: 739.7662 points.
+GrimTriggerPlayer: 733.9215 points.
+CombinedPlayer: 732.2118 points.
+ImprovedPlayer: 728.5336 points.
+TitForTatPlayer2: 721.5539 points.
+NicePlayer: 685.2549 points.
+SoftGrudgerPlayer: 660.65765 points.
+FreakyPlayer: 614.9123 points.
+HardMajorityPlayer: 577.3476 points.
+NastyPlayer: 564.9635 points.
+RandomPlayer: 546.6616 points.
+ReverseT4TPlayer: 495.96725 points.
+
+Tournament 24
+GrimTriggerPlayer: 761.3685 points.
+TolerantPlayer: 750.2673 points.
+CombinedPlayer: 748.5681 points.
+FirmButFairPlayer: 741.8098 points.
+SinghAishwaryaPlayer: 741.40826 points.
+GradualPlayer: 733.8645 points.
+TitForTatPlayer2: 732.49084 points.
+T4TPlayer: 729.55914 points.
+ImprovedPlayer: 713.8581 points.
+SoftGrudgerPlayer: 670.7257 points.
+NicePlayer: 664.1903 points.
+FreakyPlayer: 574.02 points.
+NastyPlayer: 566.81213 points.
+HardMajorityPlayer: 563.2055 points.
+RandomPlayer: 540.15265 points.
+ReverseT4TPlayer: 505.02847 points.
+
+Tournament 25
+SinghAishwaryaPlayer: 759.5889 points.
+GrimTriggerPlayer: 754.4811 points.
+TolerantPlayer: 751.8372 points.
+CombinedPlayer: 748.47974 points.
+FirmButFairPlayer: 742.1135 points.
+GradualPlayer: 739.1123 points.
+T4TPlayer: 726.2478 points.
+TitForTatPlayer2: 725.12195 points.
+ImprovedPlayer: 712.53485 points.
+NicePlayer: 676.12317 points.
+SoftGrudgerPlayer: 669.1439 points.
+FreakyPlayer: 597.6941 points.
+NastyPlayer: 583.37915 points.
+HardMajorityPlayer: 564.5265 points.
+RandomPlayer: 550.7462 points.
+ReverseT4TPlayer: 507.58948 points.
