@@ -53,50 +53,160 @@ public class ThreePrisonersDilemma {
 	/* Here are four simple strategies: */
 
 	// 1
-	public class SinghAishwaryaPlayer extends Player {
+	class FirmButFairPlayer extends Player {
 
+		// Flag to keep track of whether to cooperate or not
+		boolean cooperate = true;
+		// Flag to keep track of the first move 
+		boolean firstMove = true; 
+	
 		int selectAction(int n, int[] myHistory, int[] oppHistory1, int[] oppHistory2) {
-	
-			// Rule 1
-			if (n == 0) return 0; //cooperate by default
-	
-			// Rule 2
-			if (n >= 99) return 1; // defect in the end
-	
-			// Rule 3, 4, 5
-	
-			/* 
-			If oppHistory[n-1] == oppHistory2[n-1] then either both cooperated or both defected the previous round,
-			hence we can just return the action that one of them played in the previous round
-			Else if oppHistory[n-1] != oppHistory[n-2] then only 1 of them cooperated the previous round.
-			This corresponds to Rule 5: playTolerantAction 
-			*/
-			return oppHistory1[n-1] == oppHistory2[n-1] ? oppHistory1[n-1]:
-			playTolerantAction(n, myHistory, oppHistory1, oppHistory2);
+			
+			// Cooperate on the first move
+			if (firstMove) {
+				firstMove = false;
+				return 0; 
+			}
+			// Try to cooperate again after (D|D) 
+			else if (!cooperate) {
+				cooperate = oppHistory1[n-1] == 0 && oppHistory2[n-1] == 0;
+				// Return 0 if cooperate, 1 if defect
+				return cooperate ? 0 : 1; 
+			} 
+			// Continue to cooperate until the other side defects
+			else {
+				cooperate = oppHistory1[n-1] == 0 && oppHistory2[n-1] == 0;
+				return cooperate ? 0 : 1; 
+			}
 		}
+	}
+
+	// 2
+	class GradualPlayer extends Player {
+		private int numDefections = 0;
+		private int consecutiveDefections = 0;
+		private boolean opponentIsForgiving = true;
 	
-		// Implentation of Rule 5: Selecting a Tolerant Action 
-		int playTolerantAction(int n, int[] myHistory, int[] oppHistory1, int[] oppHistory2) {
-			int opponent1 = 0;
-			int opponent2 = 0;
-	
-			for (int i = 0 ; i < n; ++i){
-				opponent1 += (oppHistory1[i] == 0? 1 : -1);
-				
-				opponent2 += (oppHistory2[i] == 0? 1: -1);
+		@Override
+		int selectAction(int n, int[] myHistory, int[] oppHistory1, int[] oppHistory2) {
+			if (n == 0) {
+				// Cooperate on the first move
+				return 0;
 			}
 	
-			// If the value > 0 then ooponent has cooperated more times than defected
-			// Only if both values > 0 then we cooperate, else defect
+			// Check if the opponent has ever defected
+			boolean opponentHasDefected = false;
+			for (int i = 0; i < n; i++) {
+				if (oppHistory1[i] == 1 || oppHistory2[i] == 1) {
+					opponentHasDefected = true;
+					break;
+				}
+			}
 	
-			if (opponent1 >= 0 && opponent2 >= 0) return 0;
-			return 1;
+			if (!opponentHasDefected) {
+				// Keep cooperating if the opponent has never defected
+				return 0;
+			}
 	
+			// If the opponent has defected at least once, start applying the gradual strategy
+			if (oppHistory1[n - 1] == 1 || oppHistory2[n - 1] == 1) {
+				// Opponent defected on the previous move
+				numDefections++;
+				consecutiveDefections++;
+				return 1;
+			} else {
+				// Opponent cooperated on the previous move
+				if (numDefections > 0 && consecutiveDefections == numDefections) {
+					// Calm down the opponent after N consecutive defections
+					consecutiveDefections = 0;
+					numDefections = 0;
+					opponentIsForgiving = true;
+					return 0;
+				} else if (opponentIsForgiving) {
+					// Cooperate if the opponent is forgiving
+					return 0;
+				} else {
+					// Defect if the opponent is not forgiving
+					consecutiveDefections++;
+					return 1;
+				}
+			}
 		}
-	}	
+	}
 
-	//2
-	class CombinedPlayer extends Player {
+	// 3
+	class GrimTriggerPlayer extends Player {
+		boolean triggered = false;
+	
+		int selectAction(int n, int[] myHistory, int[] oppHistory1, int[] oppHistory2) {
+			if (!triggered) {
+				for (int i = 0; i < n; i++) {
+					if (oppHistory1[i] == 1 || oppHistory2[i] == 1) {
+						// Rule: Cooperate until opponent defects
+						triggered = true; 
+						break;
+					}
+				}
+			}
+	
+			if (triggered) {
+				// Rule: Defect once opponent has defected
+				return 1; 
+			} else {
+				// Rule: Cooperate initially
+				return 0; 
+			}
+		}
+	}
+
+	// 4
+	class HardMajorityPlayer extends Player {
+		// Counter to keep track of number of times agent has cooperated
+		int numCooperate = 0; 
+	
+		int selectAction(int n, int[] myHistory, int[] oppHistory1, int[] oppHistory2) {
+			if (n == 0) {
+				// Rule: Defect on the first move
+				return 1; 
+			} else {
+				// Count the number of times the opponent has defected
+				int numDefect = 0;
+				for (int i = 0; i < n; i++) {
+					if (oppHistory1[i] == 1 || oppHistory2[i] == 1) {
+						numDefect++;
+					}
+				}
+	
+				// If number of defections by opponent >= number of times agent has cooperated, defect; else cooperate
+				if (numDefect >= numCooperate) {
+					// Rule: Defect if opponent has defected more
+					return 1; 
+				} else {
+					// Increment counter for number of times agent has cooperated
+					numCooperate++; 
+					// Rule: Cooperate otherwise
+					return 0; 
+				}
+			}
+		}
+	}
+	
+	// 5
+	class ReverseT4TPlayer extends Player {
+		// ReverseT4TPlayer defects on the first move,
+		// then plays the reverse of the opponent's last move.
+		int selectAction(int n, int[] myHistory, int[] oppHistory1, int[] oppHistory2) {
+			if (n == 0) {
+				return 1; // Defect on the first move
+			} else {
+				int lastOpponentMove = oppHistory1[n-1]; // Get opponent's last move
+				return lastOpponentMove == 0 ? 1 : 0; // Reverse opponent's last move
+			}
+		}
+	}
+
+	//6
+	class Gradual_FBF_Combined extends Player {
 		// Parameters for GradualPlayer's strategy
 		private int numDefections = 0;
 		private int consecutiveDefections = 0;
@@ -105,9 +215,6 @@ public class ThreePrisonersDilemma {
 		// Parameters for FirmButFairPlayer's strategy
 		private boolean cooperate = true;
 		private boolean firstMove = true;
-	
-		// Parameters for GrimTriggerPlayer's strategy
-		private boolean triggered = false;
 	
 		@Override
 		int selectAction(int n, int[] myHistory, int[] oppHistory1, int[] oppHistory2) {
@@ -164,7 +271,7 @@ public class ThreePrisonersDilemma {
 				}
 			}
 		}
-	}
+	}	
 	
 	class BestPlayer extends Player {
 		// Parameters for GrimTriggerPlayer's strategy
@@ -175,9 +282,6 @@ public class ThreePrisonersDilemma {
 		private int opponentDefect = 0;
 	
 		// Parameters for CombinedPlayer's strategy
-		private int numDefections = 0;
-		private int consecutiveDefections = 0;
-		private boolean opponentIsForgiving = true;
 		private boolean cooperate = true;
 		private boolean firstMove = true;
 	
@@ -241,231 +345,6 @@ public class ThreePrisonersDilemma {
 			}
 		}
 	}	
-
-	// 3
-	class GrimTriggerPlayer extends Player {
-		boolean triggered = false;
-	
-		int selectAction(int n, int[] myHistory, int[] oppHistory1, int[] oppHistory2) {
-			if (!triggered) {
-				for (int i = 0; i < n; i++) {
-					if (oppHistory1[i] == 1 || oppHistory2[i] == 1) {
-						triggered = true;
-						break;
-					}
-				}
-			}
-	
-			if (triggered) {
-				return 1; // defect
-			} else {
-				return 0; // cooperate
-			}
-		}
-	}
-
-	// 4
-	class FirmButFairPlayer extends Player {
-		boolean cooperate = true;
-		boolean firstMove = true;
-	
-		int selectAction(int n, int[] myHistory, int[] oppHistory1, int[] oppHistory2) {
-			if (firstMove) {
-				firstMove = false;
-				return 0;  // cooperate on the first move
-			} else if (!cooperate) {
-				cooperate = oppHistory1[n-1] == 0 && oppHistory2[n-1] == 0;
-				// try to cooperate again after (D|D)
-				return cooperate ? 0 : 1;
-			} else {
-				cooperate = oppHistory1[n-1] == 0 && oppHistory2[n-1] == 0;
-				// continue to cooperate until the other side defects
-				return cooperate ? 0 : 1;
-			}
-		}
-	}
-
-	// 5
-	class GradualPlayer extends Player {
-		private int numDefections = 0;
-		private int consecutiveDefections = 0;
-		private boolean opponentIsForgiving = true;
-	
-		@Override
-		int selectAction(int n, int[] myHistory, int[] oppHistory1, int[] oppHistory2) {
-			if (n == 0) {
-				// Cooperate on the first move
-				return 0;
-			}
-	
-			// Check if the opponent has ever defected
-			boolean opponentHasDefected = false;
-			for (int i = 0; i < n; i++) {
-				if (oppHistory1[i] == 1 || oppHistory2[i] == 1) {
-					opponentHasDefected = true;
-					break;
-				}
-			}
-	
-			if (!opponentHasDefected) {
-				// Keep cooperating if the opponent has never defected
-				return 0;
-			}
-	
-			// If the opponent has defected at least once, start applying the gradual strategy
-			if (oppHistory1[n - 1] == 1 || oppHistory2[n - 1] == 1) {
-				// Opponent defected on the previous move
-				numDefections++;
-				consecutiveDefections++;
-				return 1;
-			} else {
-				// Opponent cooperated on the previous move
-				if (numDefections > 0 && consecutiveDefections == numDefections) {
-					// Calm down the opponent after N consecutive defections
-					consecutiveDefections = 0;
-					numDefections = 0;
-					opponentIsForgiving = true;
-					return 0;
-				} else if (opponentIsForgiving) {
-					// Cooperate if the opponent is forgiving
-					return 0;
-				} else {
-					// Defect if the opponent is not forgiving
-					consecutiveDefections++;
-					return 1;
-				}
-			}
-		}
-	}
-
-	// 6
-	class TitForTatPlayer2 extends Player {
-		//TitForTatPlayer cooperates in the first round, and then copies
-		//the previous action of the opponent with the highest total payoff
-		int selectAction(int n, int[] myHistory, int[] oppHistory1, int[] oppHistory2) {
-			//cooperate in the first round
-			if (n == 0) {
-				return 0;
-			}
-			//determine which opponent has the highest total payoff so far
-			int payoff1 = 0;
-			int payoff2 = 0;
-			for (int i = 0; i < n; i++) {
-				payoff1 += payoff[myHistory[i]][oppHistory1[i]][oppHistory2[i]];
-				payoff2 += payoff[oppHistory1[i]][oppHistory2[i]][myHistory[i]];
-			}
-			if (payoff1 >= payoff2) {
-				//copy opponent 1's previous action
-				return oppHistory1[n-1];
-			} else {
-				//copy opponent 2's previous action
-				return oppHistory2[n-1];
-			}
-		}
-	}
-	
-	// 7
-	class ReverseT4TPlayer extends Player {
-		// ReverseT4TPlayer defects on the first move,
-		// then plays the reverse of the opponent's last move.
-		int selectAction(int n, int[] myHistory, int[] oppHistory1, int[] oppHistory2) {
-			if (n == 0) {
-				return 1; // Defect on the first move
-			} else {
-				int lastOpponentMove = oppHistory1[n-1]; // Get opponent's last move
-				return lastOpponentMove == 0 ? 1 : 0; // Reverse opponent's last move
-			}
-		}
-	}
-
-	// 8
-	class SoftGrudgerPlayer extends Player {
-		boolean didOpponentDefect = false;
-		int consecutiveDefects = 0;
-	
-		@Override
-		int selectAction(int n, int[] myHistory, int[] oppHistory1, int[] oppHistory2) {
-			if (didOpponentDefect) {
-				if (consecutiveDefects < 4) {
-					consecutiveDefects++;
-					return 1; // D
-				} else if (consecutiveDefects == 4) {
-					consecutiveDefects++;
-					return 0; // C
-				} else if (consecutiveDefects == 5) {
-					didOpponentDefect = false;
-					consecutiveDefects = 0;
-					return 0; // C
-				}
-			} else {
-				return 0; // C
-			}
-			return 0; // C (shouldn't get here)
-		}
-	}
-	
-	// 9
-	class HardMajorityPlayer extends Player {
-		// Hard Majority Player defects on the first move and
-		// defects if the number of defections of the opponent
-		// is greater than or equal to the number of times it has cooperated.
-		int selectAction(int n, int[] myHistory, int[] oppHistory1, int[] oppHistory2) {
-			if (n == 0) {
-				return 1; // Defect on the first move
-			} else {
-				int numDefects = 0;
-				int numCoops = 0;
-				for (int i = 0; i < n; i++) {
-					if (oppHistory1[i] == 1 || oppHistory2[i] == 1) {
-						numDefects++;
-					} else {
-						numCoops++;
-					}
-				}
-				if (numDefects >= numCoops) {
-					return 1; // Defect if numDefects >= numCoops
-				} else {
-					return 0; // Cooperate otherwise
-				}
-			}
-		}
-	}
-	
-	// 10
-	public class ImprovedPlayer extends Player {
-		int selectAction(int n, int[] myHistory, int[] oppHistory1, int[] oppHistory2) {
-			if (n == 0) {
-				// First round, cooperate
-				return 0;
-			} else {
-				// Tit-for-Tat strategy
-				int opponent1LastMove = oppHistory1[n-1];
-				int opponent2LastMove = oppHistory2[n-1];
-				int opponent1CoopCount = 0;
-				int opponent2CoopCount = 0;
-				
-				// Count the number of times opponents cooperated in the past
-				for (int i = 0; i < n; i++) {
-					if (oppHistory1[i] == 0) {
-						opponent1CoopCount++;
-					}
-					if (oppHistory2[i] == 0) {
-						opponent2CoopCount++;
-					}
-				}
-				
-				// Tolerant Player strategy
-				if (opponent1CoopCount > n/2 && opponent2CoopCount > n/2) {
-					// If both opponents cooperated more than half the time, cooperate
-					return 0;
-				} else {
-					// Otherwise, mirror the last move of a randomly selected opponent
-					int randomOpponent = Math.random() < 0.5 ? opponent1LastMove : opponent2LastMove;
-					return randomOpponent;
-				}
-			}
-		}
-	}
 	
 	class NicePlayer extends Player {
 		//NicePlayer always cooperates
@@ -582,7 +461,7 @@ public class ThreePrisonersDilemma {
 	 (strategies) in between matches. When you add your own strategy,
 	 you will need to add a new entry to makePlayer, and change numPlayers.*/
 	
-	int numPlayers = 17;
+	int numPlayers = 13;
 	Player makePlayer(int which) {
 		switch (which) {
 		case 0: return new NicePlayer();
@@ -591,17 +470,15 @@ public class ThreePrisonersDilemma {
 		case 3: return new TolerantPlayer();
 		case 4: return new FreakyPlayer();
 		case 5: return new T4TPlayer();
-		case 6: return new SinghAishwaryaPlayer();
-		case 7: return new CombinedPlayer();
+
+		case 6: return new FirmButFairPlayer();
+		case 7: return new GradualPlayer();
 		case 8: return new GrimTriggerPlayer();
-		case 9: return new FirmButFairPlayer();
-		case 10: return new GradualPlayer();
-		case 11: return new TitForTatPlayer2();
-		case 12: return new ReverseT4TPlayer();
-		case 13: return new SoftGrudgerPlayer();
-		case 14: return new HardMajorityPlayer();
-		case 15: return new ImprovedPlayer();
-		case 16: return new BestPlayer();
+		case 9: return new HardMajorityPlayer();
+		case 10: return new ReverseT4TPlayer();
+		
+		case 11: return new Gradual_FBF_Combined();
+		case 12: return new BestPlayer();
 		}
 		throw new RuntimeException("Bad argument passed to makePlayer");
 	}
