@@ -204,90 +204,19 @@ public class ThreePrisonersDilemma {
 			}
 		}
 	}
-
-	//6
-	class Gradual_FBF_Combined extends Player {
-		// Parameters for GradualPlayer's strategy
-		private int numDefections = 0;
-		private int consecutiveDefections = 0;
-		private boolean opponentIsForgiving = true;
-	
-		// Parameters for FirmButFairPlayer's strategy
-		private boolean cooperate = true;
-		private boolean firstMove = true;
-	
-		@Override
-		int selectAction(int n, int[] myHistory, int[] oppHistory1, int[] oppHistory2) {
-			// Check if the opponent has ever defected
-			boolean opponentHasDefected = false;
-			for (int i = 0; i < n; i++) {
-				if (oppHistory1[i] == 1 || oppHistory2[i] == 1) {
-					opponentHasDefected = true;
-					break;
-				}
-			}
-	
-			if (opponentHasDefected) {
-				// Apply GradualPlayer's strategy
-				if (oppHistory1[n - 1] == 1 || oppHistory2[n - 1] == 1) {
-					// Opponent defected on the previous move
-					numDefections++;
-					consecutiveDefections++;
-					cooperate = false;
-					return 1;
-				} else {
-					// Opponent cooperated on the previous move
-					if (numDefections > 0 && consecutiveDefections == numDefections) {
-						// Calm down the opponent after N consecutive defections
-						consecutiveDefections = 0;
-						numDefections = 0;
-						opponentIsForgiving = true;
-						cooperate = true;
-						return 0;
-					} else if (opponentIsForgiving) {
-						// Cooperate if the opponent is forgiving
-						cooperate = true;
-						return 0;
-					} else {
-						// Defect if the opponent is not forgiving
-						cooperate = false;
-						consecutiveDefections++;
-						return 1;
-					}
-				}
-			} else {
-				// Apply FirmButFairPlayer's strategy
-				if (firstMove) {
-					firstMove = false;
-					return 0; // cooperate on the first move
-				} else if (!cooperate) {
-					cooperate = oppHistory1[n - 1] == 0 && oppHistory2[n - 1] == 0;
-					// try to cooperate again after (D|D)
-					return cooperate ? 0 : 1;
-				} else {
-					cooperate = oppHistory1[n - 1] == 0 && oppHistory2[n - 1] == 0;
-					// continue to cooperate until the other side defects
-					return cooperate ? 0 : 1;
-				}
-			}
-		}
-	}	
 	
 	class BestPlayer extends Player {
-		// Parameters for GrimTriggerPlayer's strategy
-		private boolean triggered = false;
-	
-		// Parameters for TolerantPlayer's strategy
+		// Private instance variables
+		private boolean triggered = false; 
 		private int opponentCoop = 0;
 		private int opponentDefect = 0;
-	
-		// Parameters for CombinedPlayer's strategy
 		private boolean cooperate = true;
 		private boolean firstMove = true;
-	
+		
+		// Overriding the selectAction method in the superclass
 		@Override
 		int selectAction(int n, int[] myHistory, int[] oppHistory1, int[] oppHistory2) {
-			// Check if the opponent has ever defected
+			// Check if opponent has defected in previous rounds
 			boolean opponentHasDefected = false;
 			for (int i = 0; i < n; i++) {
 				if (oppHistory1[i] == 1 || oppHistory2[i] == 1) {
@@ -295,9 +224,10 @@ public class ThreePrisonersDilemma {
 					break;
 				}
 			}
-	
+			
+			// If opponent has defected, follow this strategy
 			if (opponentHasDefected) {
-				// Apply GrimTriggerPlayer's strategy
+				// Check if triggered by a previous defection
 				if (!triggered) {
 					for (int i = 0; i < n; i++) {
 						if (oppHistory1[i] == 1 || oppHistory2[i] == 1) {
@@ -306,11 +236,12 @@ public class ThreePrisonersDilemma {
 						}
 					}
 				}
-	
+		
+				// If triggered, always defect
 				if (triggered) {
-					return 1; // defect
+					return 1;
 				} else {
-					// Apply TolerantPlayer's strategy
+					// If not triggered, compare opponent's cooperation and defection rates
 					for (int i = 0; i < n; i++) {
 						if (oppHistory1[i] == 0)
 							opponentCoop = opponentCoop + 1;
@@ -324,37 +255,41 @@ public class ThreePrisonersDilemma {
 							opponentDefect = opponentDefect + 1;
 					}
 					if (opponentDefect > opponentCoop)
-						return 1;
+						return 1; // Defect
 					else
-						return 0;
+						return 0; // Cooperate
 				}
-			} else {
-				// Apply CombinedPlayer's strategy
+			} else { 
+				// If opponent has not defected
+				// On the first move, cooperate
 				if (firstMove) {
 					firstMove = false;
-					return 0; // cooperate on the first move
-				} else if (!cooperate) {
+					return 0; 
+				} else if (!cooperate) { 
+					// If last move was a defection
 					cooperate = oppHistory1[n - 1] == 0 && oppHistory2[n - 1] == 0;
-					// try to cooperate again after (D|D)
-					return cooperate ? 0 : 1;
-				} else {
+					// Cooperate if both opponents cooperated, otherwise defect
+					return cooperate ? 0 : 1; 
+				} else { 
+					// If last move was cooperation
 					cooperate = oppHistory1[n - 1] == 0 && oppHistory2[n - 1] == 0;
-					// continue to cooperate until the other side defects
-					return cooperate ? 0 : 1;
+					// Cooperate if both opponents cooperated, otherwise defect
+					return cooperate ? 0 : 1; 
 				}
 			}
 		}
-	}	
+	}
+	
 	
 	class NicePlayer extends Player {
-		//NicePlayer always cooperates
+		// NicePlayer always cooperates
 		int selectAction(int n, int[] myHistory, int[] oppHistory1, int[] oppHistory2) {
 			return 0; 
 		}
 	}
 	
 	class NastyPlayer extends Player {
-		//NastyPlayer always defects
+		// NastyPlayer always defects
 		int selectAction(int n, int[] myHistory, int[] oppHistory1, int[] oppHistory2) {
 			return 1; 
 		}
@@ -461,7 +396,7 @@ public class ThreePrisonersDilemma {
 	 (strategies) in between matches. When you add your own strategy,
 	 you will need to add a new entry to makePlayer, and change numPlayers.*/
 	
-	int numPlayers = 13;
+	int numPlayers = 12;
 	Player makePlayer(int which) {
 		switch (which) {
 		case 0: return new NicePlayer();
@@ -476,9 +411,9 @@ public class ThreePrisonersDilemma {
 		case 8: return new GrimTriggerPlayer();
 		case 9: return new HardMajorityPlayer();
 		case 10: return new ReverseT4TPlayer();
-		
-		case 11: return new Gradual_FBF_Combined();
-		case 12: return new BestPlayer();
+
+		// case 11: return new Gradual_FBF_Combined();
+		case 11: return new BestPlayer();
 		}
 		throw new RuntimeException("Bad argument passed to makePlayer");
 	}

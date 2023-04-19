@@ -50,20 +50,17 @@ public class SinghAishwaryaPlayer {
 	
 	// Implemented Solution
 	class BestPlayer extends Player {
-		// Parameters for GrimTriggerPlayer's strategy
-		private boolean triggered = false;
-	
-		// Parameters for TolerantPlayer's strategy
+		// Private instance variables
+		private boolean triggered = false; 
 		private int opponentCoop = 0;
 		private int opponentDefect = 0;
-	
-		// Parameters for CombinedPlayer's strategy
 		private boolean cooperate = true;
 		private boolean firstMove = true;
-	
+		
+		// Overriding the selectAction method in the superclass
 		@Override
 		int selectAction(int n, int[] myHistory, int[] oppHistory1, int[] oppHistory2) {
-			// Check if the opponent has ever defected
+			// Check if opponent has defected in previous rounds
 			boolean opponentHasDefected = false;
 			for (int i = 0; i < n; i++) {
 				if (oppHistory1[i] == 1 || oppHistory2[i] == 1) {
@@ -71,9 +68,10 @@ public class SinghAishwaryaPlayer {
 					break;
 				}
 			}
-	
+			
+			// If opponent has defected, follow this strategy
 			if (opponentHasDefected) {
-				// Apply GrimTriggerPlayer's strategy
+				// Check if triggered by a previous defection
 				if (!triggered) {
 					for (int i = 0; i < n; i++) {
 						if (oppHistory1[i] == 1 || oppHistory2[i] == 1) {
@@ -82,11 +80,12 @@ public class SinghAishwaryaPlayer {
 						}
 					}
 				}
-	
+		
+				// If triggered, always defect
 				if (triggered) {
-					return 1; // defect
+					return 1;
 				} else {
-					// Apply TolerantPlayer's strategy
+					// If not triggered, compare opponent's cooperation and defection rates
 					for (int i = 0; i < n; i++) {
 						if (oppHistory1[i] == 0)
 							opponentCoop = opponentCoop + 1;
@@ -100,27 +99,30 @@ public class SinghAishwaryaPlayer {
 							opponentDefect = opponentDefect + 1;
 					}
 					if (opponentDefect > opponentCoop)
-						return 1;
+						return 1; // Defect
 					else
-						return 0;
+						return 0; // Cooperate
 				}
-			} else {
-				// Apply CombinedPlayer's strategy
+			} else { 
+				// If opponent has not defected
+				// On the first move, cooperate
 				if (firstMove) {
 					firstMove = false;
-					return 0; // cooperate on the first move
-				} else if (!cooperate) {
+					return 0; 
+				} else if (!cooperate) { 
+					// If last move was a defection
 					cooperate = oppHistory1[n - 1] == 0 && oppHistory2[n - 1] == 0;
-					// try to cooperate again after (D|D)
-					return cooperate ? 0 : 1;
-				} else {
+					// Cooperate if both opponents cooperated, otherwise defect
+					return cooperate ? 0 : 1; 
+				} else { 
+					// If last move was cooperation
 					cooperate = oppHistory1[n - 1] == 0 && oppHistory2[n - 1] == 0;
-					// continue to cooperate until the other side defects
-					return cooperate ? 0 : 1;
+					// Cooperate if both opponents cooperated, otherwise defect
+					return cooperate ? 0 : 1; 
 				}
 			}
 		}
-	}	
+	}
 	
 	class NicePlayer extends Player {
 		//NicePlayer always cooperates
