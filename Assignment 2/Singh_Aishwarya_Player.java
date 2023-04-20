@@ -48,7 +48,7 @@ public class SinghAishwaryaPlayer {
 	
 	/* Here are four simple strategies: */
 	
-	// Implemented Solution
+	// Implemented Solution - Final Submission
 	class BestPlayer extends Player {
 		// Private instance variables
 		private boolean triggered = false; 
@@ -57,7 +57,6 @@ public class SinghAishwaryaPlayer {
 		private boolean cooperate = true;
 		private boolean firstMove = true;
 		
-		// Overriding the selectAction method in the superclass
 		@Override
 		int selectAction(int n, int[] myHistory, int[] oppHistory1, int[] oppHistory2) {
 			// Check if opponent has defected in previous rounds
