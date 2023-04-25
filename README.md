@@ -29,7 +29,7 @@
 <!-- Table of Contents -->
 # :star2: Table of Contents
 
-- [Lecture 1: Why Agents?](#why-agents)
+- [Lecture 1: Why Agents](#why-agents)
 - [Lecture 2: Intelligent Agents](#intelligent-agents)
 - [Lecture 3: Agent Decision Making](#agent-decision-making)  
 - [Lecture 4: Multi-Agent Systems](#mas)
