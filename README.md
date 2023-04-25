@@ -25,3 +25,14 @@
     <a href="Assignment 2/">Assignment 2</a>
   </h4>
 </div>
+
+<!-- Table of Contents -->
+# :star2: Table of Contents
+
+- [Lecture 1: Why Agents?](#why-agents)
+- [Lecture 2: Intelligent Agents](#intelligent-agents)
+- [Lecture 3: Agent Decision Making](#agent-decision-making)  
+- [Lecture 4: Multi-Agent Systems](#mas)
+
+## :notebook_with_decorative_cover: Why Agents
+- 
