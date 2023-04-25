@@ -9,13 +9,13 @@
 <!-- Badges -->
 <p>
   <a href="">
-    <img src="https://img.shields.io/github/last-commit/aish21/VirtualEYE-FYP" alt="last commit" />
+    <img src="https://img.shields.io/github/last-commit/aish21/CZ4046-Intelligent-Agents" alt="last commit" />
   </a>
-  <a href="https://github.com/aish21/VirtualEYE-FYP/stargazers/">
-    <img src="https://img.shields.io/github/stars/aish21/VirtualEYE-FYP" alt="stars" />
+  <a href="https://github.com/aish21/CZ4046-Intelligent-Agents/stargazers/">
+    <img src="https://img.shields.io/github/stars/aish21/CZ4046-Intelligent-Agents" alt="stars" />
   </a>
-  <a href="https://github.com/aish21/VirtualEYE-FYP/issues/">
-    <img src="https://img.shields.io/github/issues/aish21/VirtualEYE-FYP" alt="open issues" />
+  <a href="https://github.com/aish21/CZ4046-Intelligent-Agents/issues/">
+    <img src="https://img.shields.io/github/issues/aish21/CZ4046-Intelligent-Agents" alt="open issues" />
   </a>
 </p>
    
