@@ -34,7 +34,7 @@
 - [Lecture 3: Agent Decision Making](#agent-decision-making)  
 - [Lecture 4: Multi-Agent Systems](#mas)
 
-## :notebook_with_decorative_cover: Why Agents
+## Why Agents
 * 5 trends - 
   - Ubiquity - continual reduction in cost of computing - introduce processing power in many devices (Pervasiveness)
   - Interconnection - Computer systems  networked into large distributed systems
