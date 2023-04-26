@@ -33,6 +33,7 @@
 - [Lecture 2: Intelligent Agents](#intelligent-agents)
 - [Lecture 3: Agent Decision Making](#agent-decision-making)  
 - [Lecture 8: Multi-Agent Interaction](#multiagent-interaction)
+- [Lecture 9: Allocating Scarce Resources](#allocating-scarce-resources)
 
 ## Why Agents
 * 5 trends - 
@@ -140,3 +141,25 @@
 * Zero-sum interactions - utilites sum to 0, strictly competitive 
 * Prisoner's dilemma, dominant - D, DD is nash, everything else is Pareto and CC is max social welfare
 * AXELROD - dont be envious, be nice, retaliate appropriately, dont hold grudges
+
+## Allocating Scarce Resources
+* Auction - concerns with allocation of goods/money by traders
+* Exchange - free alteration of goods/money among traders
+* Limit Price - effect on the behaviour of traders - a value placed on goods
+  - Private Value: independent/individual value/worth
+  - Common Value: Same value for all
+  - Correlated Value: related values
+* Market Institution - defines how the exchange takes place - what messages, final allocation deprends on this - an auction (bids - offers to buy and asks - offer to sell) - higher bids and lower asks
+* Market clearing - change of allocation
+* Single vs Multi-Dimensional Auctions: Offer includes price and quantity vs offer includes lots of other information
+* Single vs Double-Sided Auctions: buy side market (one buyer and many sellers) and sell side market (many buyers and one seller) vs many buyers and sellers
+* Open cry vs Sealed Bid: trader announces to all traders vs only auctioner sees offers
+* Single vs Multi Unit: one at a time, bid both price and quantity (bid at a time)
+* First vs Kth Price: winner pays the highest price bid vs winner pays the kth highest price bid
+* Single Item vs Multi Item: One indivisible thing being auctioned vs bid for a bundle of goods (value not linear combination of parts)
+* Auction Types - 
+  - English: reserve price, lowest acceptable one - buyer calls out bid, price increases, fixed time and no more activity
+  - Dutch: descending clock, starts at high price and bidder calls out descending prices, bidder claims if price acceptable, ties are broken by restarting from a slightly higher price, high volume and sell perishable good
+  - First Price Sealed Bid - English + classified bids, for treasury bonds
+  - Vickrey - FPSB + winner pays 2nd highest bidder amount - vid at your own true evaluation
+  - Combinatorial: for bundle of goods, set of items to be auctioned, agents, valuation fn (exponential of 2 for agent i to take care of all combinations) > free disposal is when agent is never worse off having more stuff
