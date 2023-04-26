@@ -56,3 +56,71 @@
   - Individual agents - autonomous actions - high risk simulations unsuitable for humans - spacecraft control, personal software agents - e-commerce, proactive - degree of autonomy varies -> as agents get better, research issues arise
   - MAS - for processes where control, data and expertise is distributed, centralised control is impractical and nodes have conflicting objectives - Air traffic control, business process management
  
+## Intelligent Agents
+* System receives input from environment and produces output for the same
+* Flexible action - 
+  - Reactive - With guaranteed environment, no need to worry about success or failure - execute blindly - maintains an ongoing interaction with its environment, and responds to the changes that occur in it.
+  - Proactive - Goal directed behaviour - attempting to achieve goals, takes initiative not just driven by events - recognizes opportunities
+  - Social - Take others into account, ability to interact with other agents via some form of communication and perhaps cooperate 
+  - Other Properties - 
+  - Mobility - move around in an electronic network 
+  - Veracity - Not knowingly communicate false information
+  - Benevolence - Do not have conflicting goals - do what its asked to do
+  - Rationality - Act in order to achieve goals - as much as its beliefs permit
+  - Learning - improve performance over time
+* Balance properties - we want agents to respond timely to stimuli and also work towards long-term goals.
+* Agents vs Objects - 
+  - Agents are autonomous - decide for themselves whether or not to perform an action
+  - Agents are smart - capable of flexible behaviour
+  - Agents are active - MAS is multi-threaded, each agent is assumed to have at least one thread of active control.
+  - Agents do it for money/because they want to
+* Agents vs AI - 
+  - Limited domain
+  - Pick the right action
+  - Do not have to solve all the problems of AI
+* Agents vs Expert Systems - 
+  - Expert systems are disembodied expertise about some domain
+  - Agents are in an environment
+  - Agents act
+  - Some real time expert systems are agents
+* Agents as Intentional Systems - 
+  - Physical Stance: Concerned with mass, energy, velocity
+  - Design Stance: Purpose, function and design
+  - Intentional Stance: Thinking, intent and beliefs 
+  - Attitudes employed in folk psychological descriptions are called intentional notions (believed, wanted)
+  - Intentional system - behaviour can be predicted by method of attributing belief, desires
+  - The more we know about a system, the less we need to rely on intentional explanations of its behaviour - but mechanistic explanations for complex systems may not be feasible
+  - As computer systems become more flexible, we need more powerful abstractions to explain their operation - intentional stance
+  - Intentional notions - abstraction tools - provide us with a convenient and familiar way of describing, explaining, and predicting the behaviour of complex systems
+  - Start from the view of agents as intentional systems
+* Environments -
+  - Accessible vs Inaccessible - agent can obtain complete, accurate, up-to-date information about the environment’s state - the more of the former, easier it is to build the agent
+  - Deterministic vs Nondeterministic - Any action has a single guaranteed effect - no uncertainty about the state that will result 
+  - Episodic vs Non-Episodic - The performance of an agent is dependent on a number of discrete episodes - no link between performance in different scenarios - simpler as we only decide on the action based on current scenario
+  - Static vs Dynamic - Environment remains unchanged except the actions of performed by the agent - no other processes operating on it (that could interfere with the agent’s actions)
+  - Discrete vs Continuous - Fixed, finite number of actions and percepts in it
+* Abstract Architecture - 
+  - Environment is a set of discrete, instantaneous states -> E = {e, e’, e’’, …}
+  - Agents have a set of actions available, which transform the state of the environment -> Ac = {a, a’, a’’, …}
+  - Run is a sequence of interleaved environment states and actions > r: e0 -a0> e1 -a1> e2 …
+  - R is the set of all possible finite sequences, RAc is a subset that will end in an action and Re is a subset that will end with an environment state
+  - State transformer function represents the behaviour of the environment - convert current environment state to a new state
+  - Environments are history dependent and non-deterministic 
+  - When transformer is null set, system has ended its run
+  - Env is a triple Env =〈E,e0,τ〉 where: E is a set of environment states, e0∈ E is the initial state, and τ is a state transformer function
+  - Agent is a function that maps runs into actions -> agent makes decisions about what action to perform based on the history of the system. AG is the set of all agents
+  - System - will have associated with it a set of possible runs ->  R(Ag, Env), contains only terminated runs
+* Purely Reactive Agents - base their decisions entirely based on the present - action:E->Ac
+* Perception - see function - agent’s ability to observe its environment, action represents the agent’s decision making process. Output of see is a percept. see:E->Per. Action is now a function, action:Per*->A, mapping sequence of percepts to actions
+* State - internal data structure, record information about the environment’s state and history. Perception is unchanged, action:I->Ac, which is an action-selection function which maps internal states to actions. Additional function next is introduced which maps internal state and percept to an internal state > next: I x Per -> I
+* Agent Control Loop - Agent starts with initial state i0 > Observes environment state e and generates percept see(e) > Internal state updated next(i0, see(e)) > action selected by the agent is action(next) > Step 2
+* We want agents to carry out tasks for us without telling them how to do it - associate utilities with individual states - bring states that maximise utilities u : E -> Real Num
+* Value of a run? Difficult to specify a long term view assigning utilities to individual states, assign utilities to runs > u: R -> Real Num, inherently takes the long term view
+* AgOPT (maximise expected utility) = argmax[Sum(R(Ag,Env)) u(r)*P(r | Ag, env)]
+* Some agents have resource constrictions - bounded optimal agents, replace with AGm
+* Predicate task specifications - Ψ : R → {0, 1}, 1 for successful run, 0 for failed
+* Task Environment specifies - properties of the system the agent will inhabit, criteria by which an agent will be judged. Ag succeeds in task environment if RΨ(Ag, Env) = R(Ag,Env)
+* P(Ψ | Ag,Env) = Summation P(r | Ag,Env)
+* Achievement - achieve state of affairs φ, set of good or goal states - The agent succeeds if it is guaranteed to bring about at least one of these states
+* Maintenance - maintain state of affairs Ψ, set of bad B states - The agent succeeds in a particular environment if it manages to avoid all states in B — if it never performs actions which result in any state in B occurring
+* Agent Synthesis - goal is to have a program that will take a task environment, and from this task environment automatically generate an agent that succeeds in this environment - complete (guaranteed to return an agent whenever there exists an agent that will succeed in the task environment given as input) and sound (whenever it returns an agent, then this agent succeeds in the task environment that is passed as input)
