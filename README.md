@@ -32,7 +32,7 @@
 - [Lecture 1: Why Agents](#why-agents)
 - [Lecture 2: Intelligent Agents](#intelligent-agents)
 - [Lecture 3: Agent Decision Making](#agent-decision-making)  
-- [Lecture 4: Multi-Agent Systems](#mas)
+- [Lecture 8: Multi-Agent Interaction](#multiagent-interaction)
 
 ## Why Agents
 * 5 trends - 
@@ -124,3 +124,19 @@
 * Achievement - achieve state of affairs φ, set of good or goal states - The agent succeeds if it is guaranteed to bring about at least one of these states
 * Maintenance - maintain state of affairs Ψ, set of bad B states - The agent succeeds in a particular environment if it manages to avoid all states in B — if it never performs actions which result in any state in B occurring
 * Agent Synthesis - goal is to have a program that will take a task environment, and from this task environment automatically generate an agent that succeeds in this environment - complete (guaranteed to return an agent whenever there exists an agent that will succeed in the task environment given as input) and sound (whenever it returns an agent, then this agent succeeds in the task environment that is passed as input)
+
+## Multiagent Interaction
+* Game Theory studies how individuals or entities make decisions in strategic situations, where the outcome of their choices depends on the choices of others, and aims to model and analyze the strategic interactions between rational decision-makers.
+* We assume we have 2 agents that are self-iterested (preferences over how the environment is), set of outcomes that agents have preferences over.
+* We capture preferences via utility functions and this results to preference orderings over outcomes
+* Environment behaviour is given by state transformer function, where outcome is a product of the 2 agents' actions
+* Agent prefers outcomes that arise through action's utility over all outcomes that arise through another action's utility - characterized via a payoff matrix.
+* Agents -> Column Player vs Row Player with each of their actions
+* Rational Agent Strategies - 
+  - Dominant Strategies: Equilibrium is where each player chooses its dominant strategy. s1 > s2 for i if every outcome possible by i playing s1 > every outcome possible by i playing s2 - never play a dominated strategy
+  - Nash Equilibrium: Strategies s1 for i and s2 for j are in nash equilibrium if i plays s1 and j cannot do better than to play s2 and j plays s2 and i can do no better than to play s1 -> neither has incentive to deviate but not every scenario will follow this, some have more than one pure strategy (matching pennies - mixed strategies where H and T have a probability of 0.5 - play k with prob pk hence p1 + p2 + pk = 1) - every finite game has a Nash in mixed strategies
+  - Pareto Optimal: if there is no other outcome that makes one agent better off without making another agent worse off. w is the pareto optimal such that there is no w* that  ui(w*) >= ui(w) and same for j and same for OR of them. If the outcome is Pareto optimal, then at least one agent will be reluctant to move, if not there is another outcome that will make everyone happy/happier.
+  - Strategies that maximise social welfare: social welfare of an outcome is the sum of utilities that each agent gets from the outcome
+* Zero-sum interactions - utilites sum to 0, strictly competitive 
+* Prisoner's dilemma, dominant - D, DD is nash, everything else is Pareto and CC is max social welfare
+* AXELROD - dont be envious, be nice, retaliate appropriately, dont hold grudges
